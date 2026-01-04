@@ -1,6 +1,7 @@
 import Hero from "@/components/landing/Hero";
 import About from "@/components/landing/About";
 import CharacterRoster from "@/components/landing/CharacterRoster";
+import JoinCommunity from "@/components/landing/JoinCommunity";
 import ChatWidget from "@/components/chat/ChatWidget";
 
 export const dynamic = "force-dynamic";
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <About />
       <CharacterRoster />
+      <JoinCommunity />
 
       <ChatWidget />
     </main>

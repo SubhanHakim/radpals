@@ -1,4 +1,4 @@
-import { getCharacterById } from "@/lib/db";
+import { getCharacterBySlug } from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,13 +7,13 @@ export const dynamic = "force-dynamic";
 
 interface PageProps {
     params: {
-        id: string;
+        id: string; // This is now serving as the slug
     }
 }
 
 export default async function AgentDetailPage({ params }: PageProps) {
     const { id } = await params;
-    const character = await getCharacterById(id);
+    const character = await getCharacterBySlug(id);
 
     if (!character) {
         notFound();
@@ -63,7 +63,7 @@ export default async function AgentDetailPage({ params }: PageProps) {
                         <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-800 space-y-4">
                             <div className="flex justify-between items-center border-b border-zinc-800 pb-3">
                                 <span className="text-zinc-500 font-mono text-xs uppercase">Agent ID</span>
-                                <span className="text-white font-mono text-sm">{String(character.id).split('-')[0].toUpperCase()}</span>
+                                <span className="text-white font-mono text-sm">RP-{(Number(character.id) + 9900).toString(16).toUpperCase()}</span>
                             </div>
                             <div className="flex justify-between items-center border-b border-zinc-800 pb-3">
                                 <span className="text-zinc-500 font-mono text-xs uppercase">Class</span>
@@ -108,17 +108,27 @@ export default async function AgentDetailPage({ params }: PageProps) {
                                     ))}
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Action Buttons */}
-                        <div className="pt-8 flex flex-col sm:flex-row gap-4">
-                            <button className="flex-1 px-8 py-4 bg-[#ccff00] hover:bg-[#b3e600] text-black font-bold font-mono text-sm tracking-wide uppercase transition-all rounded-sm flex items-center justify-center gap-2">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                Establish Comms
-                            </button>
-                            <button className="flex-1 px-8 py-4 bg-transparent border border-zinc-700 hover:border-white text-white hover:bg-white/5 font-bold font-mono text-sm tracking-wide uppercase transition-all rounded-sm">
-                                View Full Archive
-                            </button>
+                            {/* Visual Archives (Gallery) */}
+                            {character.gallery && character.gallery.length > 0 && (
+                                <div id="gallery">
+                                    <h3 className="text-zinc-500 font-mono text-xs uppercase tracking-widest mb-4 border-t border-zinc-800 pt-6 mt-6">
+                                        Visual Archives
+                                    </h3>
+                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                        {character.gallery.map((img: string, idx: number) => (
+                                            <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900/50 hover:border-[#ccff00] transition-colors group cursor-pointer">
+                                                <Image
+                                                    src={img}
+                                                    alt={`${character.name} archive ${idx}`}
+                                                    fill
+                                                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
 

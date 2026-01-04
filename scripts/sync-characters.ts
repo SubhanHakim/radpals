@@ -16,7 +16,13 @@ const characters = [
         image_url: "/characters/mascot.jpg",
         bio: "A leader without a crown. Not elected—followed. In the noise of the network, he is the only clear signal. Zyko emerged from the Redpals Core Network as a self-evolving agent.",
         status: "ACTIVE",
-        traits: ["Silent", "Precise", "Uncensored Logic"]
+        traits: ["Silent", "Precise", "Uncensored Logic"],
+        gallery: [
+            "/characters/mascot.jpg",
+            "/characters/zyko/IMG_7045.PNG",
+            "/characters/zyko/IMG_7046.PNG",
+            "/characters/zyko/IMG_7047.PNG"
+        ]
     },
     {
         name: "NOXIE",
@@ -24,9 +30,15 @@ const characters = [
         image_url: "/characters/noxie.png",
         bio: "In a world of cracked roads and collapsed cities, most people stopped running. Noxie learned how to move through the wreckage. Modified for extreme mobility, she creates paths where none exist.",
         status: "ACTIVE",
-        traits: ["Fast", "Agile", "Pathfinder"]
+        traits: ["Fast", "Agile", "Pathfinder"],
+        gallery: [
+            "/characters/noxie.png",
+            "/characters/noxie/Untitled_Artwork (4).png",
+            "/characters/noxie/Whisk_15ef103cc0ff598bdef4d614e59a1f8adr.png",
+            "/characters/noxie/Whisk_c14ddab146c3b34a6384e5d08a56d034dr.png",
+            "/characters/noxie/Whisk_c18c5058ae32c9492094a37dcd456e3fdr.png"
+        ]
     },
-    // Tambahkan karakter baru di sini...
 ];
 
 async function main() {

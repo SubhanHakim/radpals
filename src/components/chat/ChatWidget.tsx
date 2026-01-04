@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChatUI from "./ChatUI";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const handleOpenChat = () => setIsOpen(true);
+        window.addEventListener('open-chat', handleOpenChat);
+        return () => window.removeEventListener('open-chat', handleOpenChat);
+    }, []);
 
     return (
         <div className="fixed bottom-8 right-8 z-50 flex items-end">
