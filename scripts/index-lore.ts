@@ -21,6 +21,10 @@ const documents = [
         source_id: "character:zyko",
         path: "data/characters/zyko.md",
     },
+    {
+        source_id: "character:noxie",
+        path: "data/characters/noxie.md",
+    },
 ];
 
 async function main() {
@@ -36,7 +40,7 @@ async function main() {
             source_id: doc.source_id,
             content,
             embedding: embedding.data[0].embedding,
-        });
+        }, { onConflict: 'source_id' });
 
         if (error) {
             console.error(`Error indexing ${doc.source_id}:`, error);
