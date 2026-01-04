@@ -18,6 +18,9 @@ export const metadata: Metadata = {
 };
 
 import Navbar from "@/components/layout/Navbar";
+import SmoothScroll from "@/components/providers/SmoothScroll";
+
+import Footer from "@/components/layout/Footer";
 
 export default function RootLayout({
   children,
@@ -29,8 +32,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
-        <Navbar />
-        {children}
+        <SmoothScroll>
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

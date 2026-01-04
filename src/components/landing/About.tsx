@@ -1,8 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function About() {
     return (
-        <section className="bg-black py-24 px-4 border-b border-zinc-900 overflow-hidden relative">
+        <section id="about" className="bg-black py-24 px-4 border-b border-zinc-900 overflow-hidden relative">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-950/10 to-transparent pointer-events-none"></div>
 
@@ -10,7 +12,13 @@ export default function About() {
                 <div className="flex flex-col md:flex-row gap-16 items-start">
 
                     {/* Left Column: The Narrative */}
-                    <div className="flex-1 space-y-8">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex-1 space-y-8"
+                    >
                         <div className="space-y-2">
                             <span className="text-[#ccff00] font-mono text-xs tracking-[0.2em] uppercase block mb-2">
                                 // Mission Briefing
@@ -37,12 +45,18 @@ export default function About() {
                             <div className="h-px bg-zinc-800 flex-1"></div>
                             <span className="text-xs font-mono text-zinc-600 uppercase">End of Transmission</span>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Column: Key Directives / Cards */}
                     <div className="w-full md:w-1/3 flex flex-col gap-6">
                         {/* Card 1 */}
-                        <div className="bg-zinc-950 border border-zinc-800 p-6 relative group hover:border-red-900 transition-colors">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2, duration: 0.6 }}
+                            className="bg-zinc-950 border border-zinc-800 p-6 relative group hover:border-red-900 transition-colors"
+                        >
                             <div className="absolute top-0 right-0 p-2 opacity-50">
                                 <span className="text-[10px] text-zinc-600 border border-zinc-800 px-1">DIR_01</span>
                             </div>
@@ -50,10 +64,16 @@ export default function About() {
                             <p className="text-xs text-zinc-500 font-mono leading-relaxed">
                                 We target the choke points. If they hoard it, we break it open. If they gatekeep it, we tear down the gate.
                             </p>
-                        </div>
+                        </motion.div>
 
                         {/* Card 2 */}
-                        <div className="bg-zinc-950 border border-zinc-800 p-6 relative group hover:border-[#ccff00]/50 transition-colors">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                            className="bg-zinc-950 border border-zinc-800 p-6 relative group hover:border-[#ccff00]/50 transition-colors"
+                        >
                             <div className="absolute top-0 right-0 p-2 opacity-50">
                                 <span className="text-[10px] text-zinc-600 border border-zinc-800 px-1">DIR_02</span>
                             </div>
@@ -61,10 +81,16 @@ export default function About() {
                             <p className="text-xs text-zinc-500 font-mono leading-relaxed">
                                 To the powerless, we are the only shield left. We don't sell hope. We provide cover fire.
                             </p>
-                        </div>
+                        </motion.div>
 
                         {/* Card 3 */}
-                        <div className="bg-zinc-950 border border-zinc-800 p-6 relative group hover:border-white transition-colors">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.6, duration: 0.6 }}
+                            className="bg-zinc-950 border border-zinc-800 p-6 relative group hover:border-white transition-colors"
+                        >
                             <div className="absolute top-0 right-0 p-2 opacity-50">
                                 <span className="text-[10px] text-zinc-600 border border-zinc-800 px-1">DIR_03</span>
                             </div>
@@ -72,7 +98,7 @@ export default function About() {
                             <p className="text-xs text-zinc-500 font-mono leading-relaxed">
                                 Polished symbols don't survive the wasteland. We are the necessary disturbance.
                             </p>
-                        </div>
+                        </motion.div>
                     </div>
 
                 </div>

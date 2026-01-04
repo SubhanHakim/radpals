@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ChatUI from "./ChatUI";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,18 +10,26 @@ export default function ChatWidget() {
     return (
         <div className="fixed bottom-8 right-8 z-50 flex items-end">
             {/* Popup Window */}
-            {isOpen && (
-                <div className="absolute bottom-20 right-0 w-[85vw] md:w-[400px] h-[500px] shadow-[0_0_50px_rgba(0,0,0,0.8)] animate-in slide-in-from-bottom-5 fade-in duration-300 origin-bottom-right">
-                    <ChatUI className="w-full h-full border-red-900/40" />
-                    {/* Pointer triangle */}
-                    <div className="absolute -bottom-2 right-6 w-4 h-4 bg-black border-r border-b border-zinc-800 rotate-45 transform"></div>
-                </div>
-            )}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, y: 10, originX: 1, originY: 1 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                        className="fixed inset-0 top-0 left-0 right-0 bottom-0 md:absolute md:inset-auto md:bottom-[4.5rem] md:right-0 z-[60] w-full h-full md:w-[380px] md:h-[600px] shadow-2xl origin-bottom-right md:rounded-3xl"
+                    >
+                        <ChatUI className="w-full h-full border-zinc-800" onClose={() => setIsOpen(false)} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Toggle Button */}
-            <button
+            <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-14 h-14 bg-[#ccff00] hover:bg-[#b3e600] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all active:scale-95 text-black border-2 border-transparent hover:border-black/10 group relative z-50"
+                className="w-14 h-14 bg-[#ccff00] hover:bg-[#b3e600] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all text-black border-2 border-transparent hover:border-black/10 group relative z-50"
                 aria-label="Toggle Terminal"
             >
                 {isOpen ? (
@@ -35,7 +44,7 @@ export default function ChatWidget() {
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
                 )}
-            </button>
+            </motion.button>
         </div>
     );
 }
