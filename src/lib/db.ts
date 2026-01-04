@@ -16,5 +16,21 @@ export async function getCharacters() {
         return [];
     }
 
+
+    return data;
+}
+
+export async function getCharacterById(id: string) {
+    const { data, error } = await supabase
+        .from("characters")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    if (error) {
+        console.error(`Error fetching character ${id}:`, error);
+        return null;
+    }
+
     return data;
 }
