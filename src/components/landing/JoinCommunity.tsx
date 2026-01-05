@@ -5,7 +5,7 @@ import { sfx } from "@/lib/sfx";
 
 export default function JoinCommunity() {
     return (
-        <section className="py-32 bg-black relative overflow-hidden border-t border-zinc-900">
+        <section id="community" className="py-32 bg-black relative overflow-hidden border-t border-zinc-900">
             {/* Background Effects matching Hero */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#ccff00]/5 rounded-full blur-[120px] pointer-events-none"></div>
 

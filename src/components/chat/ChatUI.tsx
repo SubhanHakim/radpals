@@ -16,7 +16,7 @@ interface ChatUIProps {
 
 const suggestions = [
     "Who is ZYKO?",
-    "What is the Redpals Protocol?",
+    "What is the Radpals?",
     "Tell me about the backstory.",
 ];
 
