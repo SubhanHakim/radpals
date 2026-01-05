@@ -23,14 +23,8 @@ export default function Footer() {
 
                 {/* Simple Links */}
                 <div className="flex items-center gap-8">
-                    <Link href="#" className="text-zinc-500 hover:text-white text-xs font-mono uppercase tracking-wide transition-colors">
-                        X / Twitter
-                    </Link>
-                    <Link href="#" className="text-zinc-500 hover:text-white text-xs font-mono uppercase tracking-wide transition-colors">
-                        Telegram
-                    </Link>
-                    <Link href="#" className="text-zinc-500 hover:text-white text-xs font-mono uppercase tracking-wide transition-colors">
-                        Docs
+                    <Link href="https://x.com/RADPALS_" className="text-zinc-500 hover:text-white text-xs font-mono uppercase tracking-wide transition-colors">
+                        X
                     </Link>
                 </div>
             </div>

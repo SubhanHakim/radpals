@@ -14,6 +14,8 @@ type Character = {
     status: string;
     traits: string[];
     gallery?: string[];
+    twitter?: string;
+    pump_contract?: string;
 };
 
 export default function AgentDetailView({ character }: { character: Character }) {
@@ -80,7 +82,7 @@ export default function AgentDetailView({ character }: { character: Character })
 
                             {/* X Button (Global) */}
                             <a
-                                href="https://twitter.com/radpals_ai"
+                                href={character.twitter || "https://twitter.com/radpals_ai"}
                                 target="_blank"
                                 className="w-16 h-16 flex items-center justify-center bg-white hover:bg-zinc-200 text-black border-2 border-transparent transition-all hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(30,30,30,1)]"
                                 onMouseEnter={() => sfx.hover()}
@@ -91,7 +93,7 @@ export default function AgentDetailView({ character }: { character: Character })
 
                             {/* Pump.fun Button (Character Specific) */}
                             <a
-                                href={`https://pump.fun/${character.name.toLowerCase()}`}
+                                href={character.pump_contract ? `https://pump.fun/${character.pump_contract}` : `https://pump.fun/${character.name.toLowerCase()}`}
                                 target="_blank"
                                 className="w-16 h-16 flex items-center justify-center bg-[#ccff00] hover:bg-[#b3e600] text-black border-2 border-transparent transition-all hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
                                 onMouseEnter={() => sfx.hover()}

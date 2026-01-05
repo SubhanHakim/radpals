@@ -42,7 +42,7 @@ export default function JoinCommunity() {
                     <div className="flex justify-center w-full pt-8">
                         {/* Twitter: Primary Style */}
                         <a
-                            href="https://twitter.com/radpals_ai"
+                            href="https://x.com/RADPALS_"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-12 py-5 bg-[#ccff00] hover:bg-[#b3e600] text-black font-bold font-mono text-sm tracking-widest uppercase transition-all rounded-sm flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_40px_rgba(204,255,0,0.5)] transform hover:-translate-y-1"

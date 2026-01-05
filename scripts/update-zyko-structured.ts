@@ -1,32 +1,43 @@
 
 import { createClient } from "@supabase/supabase-js";
+import dotenv from "dotenv";
 
-const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Load environment variables from .env.local
+dotenv.config({ path: ".env.local" });
+// Note: Ensure you run this script with environment variables loaded, e.g.:
+// export $(cat .env.local | xargs) && npx tsx scripts/update-zyko-structured.ts
+// OR if using a specific runner.
 
-// Definisi Data ZYKO (Format Rapi)
-const zykoData = {
-    role: "Leader of the Radpals",
-    bio: "A leader without a crown. Not elected—followed. In the noise of the network, he is the only clear signal.",
-    traits: ["Silent", "Precise", "Uncensored Logic"],
-    status: "ACTIVE"
-};
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-async function main() {
-    console.log("Updating ZYKO with structured data...");
+if (!supabaseUrl || !supabaseKey) {
+    console.error("Error: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set.");
+    process.exit(1);
+}
 
-    const { error } = await supabase
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+async function updateZyko() {
+    console.log("Updating ZYKO data...");
+
+    const updates = {
+        twitter: "https://x.com/Zyko_world",
+        pump_contract: "3ASc2nQbyLRcgDmFMW8bkzzm153KcovTYsg5cJTPpump"
+    };
+
+    const { data, error } = await supabase
         .from("characters")
-        .update(zykoData)
-        .eq("name", "ZYKO");
+        .update(updates)
+        .eq("name", "ZYKO")
+        .select();
 
     if (error) {
-        console.error(`Error updating ZYKO:`, error);
+        console.error("Error updating ZYKO:", error);
+        console.log("\nPossible Fix: Ensure the 'twitter' and 'pump_contract' columns exist in your 'characters' table.");
     } else {
-        console.log(`Successfully updated ZYKO details.`);
+        console.log("Successfully updated ZYKO:", data);
     }
 }
 
-main();
+updateZyko();
