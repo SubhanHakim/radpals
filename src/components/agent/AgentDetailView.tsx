@@ -52,11 +52,11 @@ export default function AgentDetailView({ character }: { character: Character })
 
                         {/* Title Block */}
                         <div>
-                            <h1 className="text-7xl lg:text-9xl font-black font-mono tracking-tighter text-white leading-[0.9]">
-                                {character.name}, <br />
-                                <span className="text-[#ccff00]">
-                                    {character.role.split(' ')[0]}
-                                </span>
+                            <h1 className="text-6xl lg:text-8xl font-black font-mono tracking-tighter text-white leading-[0.9]">
+                                <div className="mb-2">{character.name},</div>
+                                <div className="text-[#ccff00] text-5xl lg:text-7xl">
+                                    {character.role}
+                                </div>
                             </h1>
                         </div>
 

@@ -10,7 +10,7 @@ const supabase = createClient(
 
 const noxie = {
     name: "NOXIE",
-    role: "The Breakrunner",
+    role: "Breakrunner",
     image_url: "/characters/noxie.png",
     bio: "In a world of cracked roads, Noxie creates paths where none exist. Modified for extreme mobility, she is the beginning and the exit for RADPALS operations.",
     status: "ACTIVE",
