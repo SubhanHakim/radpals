@@ -16,7 +16,7 @@ const noxie = {
     status: "ACTIVE",
     traits: ["Fast", "Agile", "Pathfinder"],
     twitter: "https://x.com/Noxie_world",
-    pump_contract: "#"
+    pump_contract: "HCsRVhEAUq4UPkjJbioC2dedhaaG1Ghe5rhX6E8jpump"
 };
 
 async function main() {
