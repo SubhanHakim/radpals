@@ -12,8 +12,19 @@ interface PageProps {
 }
 
 export default async function AgentDetailPage({ params }: PageProps) {
-    const { id } = await params;
-    const character = await getCharacterBySlug(id);
+    // Await params to ensure compatibility with Next.js 15+
+    const resolvedParams = await params;
+    const { id } = resolvedParams;
+
+    let character = null;
+
+    try {
+        character = await getCharacterBySlug(id);
+    } catch (error) {
+        console.error("Failed to fetch character for page:", id, error);
+        // We can choose to show 404 or a fallback. 404 is safer.
+        notFound();
+    }
 
     if (!character) {
         notFound();

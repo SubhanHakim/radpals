@@ -7,8 +7,16 @@ let audioCtx: AudioContext | null = null;
 
 const initAudio = () => {
     if (typeof window === 'undefined') return null;
-    if (!audioCtx) {
-        audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    try {
+        if (!audioCtx) {
+            const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+            if (AudioContextClass) {
+                audioCtx = new AudioContextClass();
+            }
+        }
+    } catch (e) {
+        console.warn("AudioContext init failed", e);
+        return null; // Silent fail on audio
     }
     return audioCtx;
 };
