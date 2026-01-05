@@ -73,7 +73,7 @@ export default function Hero() {
                             className="px-10 py-4 bg-[#ccff00] hover:bg-[#bbe600] text-black font-mono font-bold text-sm tracking-widest uppercase rounded-sm transition-all shadow-[0_0_20px_rgba(204,255,0,0.4)] hover:shadow-[0_0_40px_rgba(204,255,0,0.6)] cursor-pointer clip-path-polygon"
                             style={{ clipPath: "polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%)" }}
                             onClick={() => {
-                                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                                window.dispatchEvent(new Event('open-chat'));
                             }}
                         >
                             Enter Terminal

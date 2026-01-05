@@ -1,20 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ChatUI from "./ChatUI";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
+    const chatRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        // Handle Custom Event to Open Chat
         const handleOpenChat = () => setIsOpen(true);
         window.addEventListener('open-chat', handleOpenChat);
-        return () => window.removeEventListener('open-chat', handleOpenChat);
-    }, []);
+
+        // Handle Closing when Clicking Outside
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                isOpen &&
+                chatRef.current &&
+                !chatRef.current.contains(event.target as Node)
+            ) {
+                setIsOpen(false);
+            }
+        };
+
+        // Add listener only when chat is open
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            window.removeEventListener('open-chat', handleOpenChat);
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]); // isOpen is a dependency for handleClickOutside logic
 
     return (
-        <div className="fixed bottom-8 right-8 z-50 flex items-end">
+        <div ref={chatRef} className="fixed bottom-8 right-8 z-50 flex items-end">
             {/* Popup Window */}
             <AnimatePresence>
                 {isOpen && (
