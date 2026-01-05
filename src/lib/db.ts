@@ -1,9 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Safe initialization for build environments where env vars might be missing
+const supabaseUrl = process.env.SUPABASE_URL || "https://placeholder.supabase.co";
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "placeholder";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function getCharacters() {
     const { data, error } = await supabase
