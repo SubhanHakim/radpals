@@ -84,7 +84,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-black border-zinc-800 py-4"
+            className="sticky top-0 w-full z-50 transition-all duration-300 border-b bg-black border-zinc-800 py-4"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative z-50">
                 {/* Logo Area */}
