@@ -16,7 +16,7 @@ const gearboi = {
     status: "ACTIVE",
     traits: ["Mechanic", "Ironhand", "Resourceful"],
     twitter: "https://x.com/gearboi_",
-    pump_contract: "https://pump.fun/coin/5Bc2SLpAoPos3AG3Qiuf9FtA9ivJoVz8ciUy2WYMpump",
+    pump_contract: "5Bc2SLpAoPos3AG3Qiuf9FtA9ivJoVz8ciUy2WYMpump",
     gallery: [
         "/characters/gearboi/Untitled_Artwork.png",
         "/characters/gearboi/IMG_2692.JPG",
