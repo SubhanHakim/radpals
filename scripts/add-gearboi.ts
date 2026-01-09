@@ -15,8 +15,8 @@ const gearboi = {
     bio: "When RADPALS tear down the old structures, GEARBOI makes sure they keep moving. He is RADPALS’ weapons mechanic. Every tool of combat is born from his makeshift workshop. What the old world discards, GEARBOI turns into functional weapons. His mask is always on, not out of fear of being recognized, but because RADPALS don’t need faces—they need action. In the post-collapse world, every gear that keeps turning is a form of resistance. And as long as GEARBOI is still working, RADPALS will never run out of tools to fight back.",
     status: "ACTIVE",
     traits: ["Mechanic", "Ironhand", "Resourceful"],
-    twitter: "#",
-    pump_contract: "#",
+    twitter: "https://x.com/gearboi_",
+    pump_contract: "https://pump.fun/coin/5Bc2SLpAoPos3AG3Qiuf9FtA9ivJoVz8ciUy2WYMpump",
     gallery: [
         "/characters/gearboi/Untitled_Artwork.png",
         "/characters/gearboi/IMG_2692.JPG",
