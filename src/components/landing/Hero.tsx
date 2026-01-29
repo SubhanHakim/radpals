@@ -78,6 +78,21 @@ export default function Hero() {
                         >
                             Enter Terminal
                         </button>
+
+                        {/* <a
+                            href="#"
+                            target="_blank"
+                            className="px-10 py-4 bg-black/40 hover:bg-black/60 text-[#ccff00] border border-[#ccff00] font-mono font-bold text-sm tracking-widest uppercase rounded-sm transition-all shadow-[0_0_20px_rgba(204,255,0,0.1)] hover:shadow-[0_0_30px_rgba(204,255,0,0.3)] cursor-pointer flex items-center gap-3 backdrop-blur-sm"
+                        >
+                            <Image
+                                src="/dexscreener.svg"
+                                alt="Dexscreener"
+                                width={20}
+                                height={20}
+                                className="w-5 h-5 object-contain"
+                            />
+                            <span>Pump.fun</span>
+                        </a> */}
                     </motion.div>
                 </div>
             </div>
