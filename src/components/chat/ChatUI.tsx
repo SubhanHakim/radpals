@@ -105,7 +105,8 @@ export default function ChatUI({ className, onClose }: ChatUIProps) {
             {/* Chat Area */}
             <div
                 ref={scrollRef}
-                className="flex-1 overflow-y-auto p-4 space-y-6 bg-[#0f0f10] relative scroll-smooth"
+                className="flex-1 overflow-y-auto min-h-0 p-4 space-y-6 bg-[#0f0f10] relative z-0 overscroll-y-contain"
+                onWheel={(e) => e.stopPropagation()}
             >
                 {messages.length === 0 ? (
                     <motion.div
